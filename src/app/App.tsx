@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { Phone, MapPin, Clock, Menu, X, Facebook, Instagram, ExternalLink, Download } from "lucide-react";
+import heroImg from '../images/sala.png';
+import storiaImg from '../images/sala2.png';
+import viniImg from '../images/vino.png';
+import terrazza3Img from '../images/terrazza3.png';
+import piatto1Img from '../images/piatto1.png';
+import piatto4Img from '../images/piatto4.png';
+import sala3Img from '../images/sala3.png';
 
 const PHOTOS = {
-  hero: '../src/images/sala.png',
-  storia: '../src/images/sala2.png',
-  vini: '../src/images/vino.png',
+  hero: heroImg,
+  storia: storiaImg,
+  vini: viniImg,
   gallery: [
-    { url: '../src/images/terrazza3.png' , alt: "Sala interna con tavoli apparecchiati" },
-    { url: '../src/images/piatto1.png' , alt: "Gnocchi al ragù, specialità della casa" },
-    { url: '../src/images/piatto4.png' , alt: "Terrazza estiva sul portico" },
-    { url: '../src/images/sala3.png' , alt: "Il giardino estivo" },
+    { url: terrazza3Img, alt: "Sala interna con tavoli apparecchiati" },
+    { url: piatto1Img, alt: "Gnocchi al ragù, specialità della casa" },
+    { url: piatto4Img, alt: "Terrazza estiva sul portico" },
+    { url: sala3Img, alt: "Il giardino estivo" },
   ],
 };
 
@@ -363,7 +370,7 @@ export default function App() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative h-screen min-h-[580px] max-h-[960px] flex items-end pt-[60px]">
+      <section className="relative h-screen min-h-[550px] max-h-[960px] flex flex-col justify-center md:justify-end pt-[60px]">
         <div className="absolute inset-0 bg-foreground">
           <img
             src={PHOTOS.hero}
@@ -373,7 +380,7 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#180c04]/95 via-[#180c04]/45 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-5 pb-16 lg:pb-28">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-5 pb-8 md:pb-20 lg:pb-28">
           <div className="max-w-[640px]">
             <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-secondary font-bold mb-5 border border-secondary/40 px-3 py-1.5 rounded-sm">
               {t.hero.badge}
@@ -384,7 +391,7 @@ export default function App() {
             <p className="text-[1.1rem] md:text-[1.2rem] text-white/80 leading-snug mb-2 font-light">
               {t.hero.subtitle}
             </p>
-            <p className="text-sm text-white/40 italic mb-10 font-body">
+            <p className="text-sm text-white/40 italic mb-6 md:mb-10 font-body">
               {t.hero.subtitleSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
