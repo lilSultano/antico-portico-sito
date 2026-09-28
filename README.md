@@ -27,4 +27,4 @@ Configurazione una tantum su GitHub: **Settings → Pages → Build and deployme
    - `www`: record `CNAME` → `<utente-github>.github.io`
 2. GitHub: **Settings → Pages → Custom domain** → inserire il dominio, poi attivare **Enforce HTTPS**.
 3. Consigliato: verificare il dominio in **Settings (account) → Pages → Verified domains**.
-4. In `index.html` attivare `canonical`, `og:url` e `og:image` con il dominio definitivo.
+4. Dominio: `anticoporticotreviso.it` (già impostato in `index.html` per canonical, Open Graph e dati strutturati).
