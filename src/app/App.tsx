@@ -1,27 +1,32 @@
-import { useState } from "react";
-import { Phone, MapPin, Clock, Menu, X, Facebook, Instagram, ExternalLink, Download } from "lucide-react";
-import heroImg from '../images/sala.png';
-import storiaImg from '../images/sala2.png';
-import viniImg from '../images/vino.png';
-import terrazza3Img from '../images/terrazza3.png';
-import piatto1Img from '../images/piatto1.png';
-import piatto4Img from '../images/piatto4.png';
-import sala3Img from '../images/sala3.png';
+import { useEffect, useState } from "react";
+import { Phone, MapPin, Clock, Menu, X, Facebook, Instagram, ExternalLink } from "lucide-react";
+import heroImg from '../images/sala.jpg';
+import storiaImg from '../images/sala2.jpg';
+import viniImg from '../images/vino.jpg';
+import terrazza3Img from '../images/terrazza3.jpg';
+import piatto1Img from '../images/piatto1.jpg';
+import piatto4Img from '../images/piatto4.jpg';
+import sala3Img from '../images/sala3.jpg';
 
 const PHOTOS = {
   hero: heroImg,
   storia: storiaImg,
   vini: viniImg,
   gallery: [
-    { url: terrazza3Img, alt: "Sala interna con tavoli apparecchiati" },
-    { url: piatto1Img, alt: "Gnocchi al ragù, specialità della casa" },
-    { url: piatto4Img, alt: "Terrazza estiva sul portico" },
-    { url: sala3Img, alt: "Il giardino estivo" },
+    { url: terrazza3Img, alt: "La terrazza estiva sotto il portico" },
+    { url: piatto1Img, alt: "Secondo di carne con spinaci e patate" },
+    { url: piatto4Img, alt: "Risotto della casa" },
+    { url: sala3Img, alt: "La sala interna con i tavoli apparecchiati" },
   ],
 };
 
-//const OSM_EMBED =
- // "https://www.openstreetmap.org/export/embed.html?bbox=12.232%2C45.664%2C12.248%2C45.672&layer=mapnik&marker=45.668%2C12.240";
+const MAPS_URL = "https://maps.app.goo.gl/5BtoaBxFksyg7LgP9";
+
+// Inserire gli URL delle pagine social: le icone compaiono solo se valorizzati
+const SOCIAL = {
+  facebook: "",
+  instagram: "",
+};
 
 type Item = { name: string; price: string };
 type Category = { name: string; items: Item[] };
@@ -149,7 +154,7 @@ const content = {
     footer: {
       tagline: "Cucina trevigiana autentica dal 1962",
       links: "Link rapidi",
-      rights: "© 2026 Trattoria Antico Portico. Tutti i diritti riservati.",
+      rights: "Trattoria Antico Portico. Tutti i diritti riservati.",
     },
   },
   en: {
@@ -183,37 +188,37 @@ const content = {
         {
           name: "Starters",
           items: [
-            { name: "Sopressa with grilled polenta", price: "9" },
-            { name: "Lardo di Colonnata with crostini", price: "10" },
-            { name: "Marinated grilled vegetables in oil", price: "8" },
-            { name: "Beef carpaccio with rocket and grana", price: "12" },
+            { name: "Sopressa with grilled polenta", price: "" },
+            { name: "Lardo di Colonnata with crostini", price: "" },
+            { name: "Marinated grilled vegetables in oil", price: "" },
+            { name: "Beef carpaccio with rocket and grana", price: "" },
           ],
         },
         {
           name: "First Courses",
           items: [
-            { name: "Bigoli with duck ragù", price: "14" },
-            { name: "Risotto with Treviso radicchio IGP", price: "15" },
-            { name: "Venetian-style pasta e fagioli", price: "11" },
-            { name: "Tagliatelle with seasonal black truffle", price: "18" },
+            { name: "Bigoli with duck ragù", price: "" },
+            { name: "Risotto with Treviso radicchio IGP", price: "" },
+            { name: "Venetian-style pasta e fagioli", price: "" },
+            { name: "Tagliatelle with seasonal black truffle", price: "" },
           ],
         },
         {
           name: "Main Courses",
           items: [
-            { name: "Braised veal cheek in Raboso wine", price: "22" },
-            { name: "Venetian-style liver with white polenta", price: "18" },
-            { name: "Pork ribs with sage and rosemary", price: "17" },
-            { name: "Baccalà alla vicentina with polenta", price: "19" },
+            { name: "Braised veal cheek in Raboso wine", price: "" },
+            { name: "Venetian-style liver with white polenta", price: "" },
+            { name: "Pork ribs with sage and rosemary", price: "" },
+            { name: "Baccalà alla vicentina with polenta", price: "" },
           ],
         },
         {
           name: "Specialties",
           items: [
-            { name: "Stuffed zucchini blossoms in batter", price: "11" },
-            { name: "Cuttlefish stew with white polenta", price: "20" },
-            { name: "Radicchio and taleggio soufflé", price: "14" },
-            { name: "Grandmother's tiramisù", price: "6" },
+            { name: "Stuffed zucchini blossoms in batter", price: "" },
+            { name: "Cuttlefish stew with white polenta", price: "" },
+            { name: "Radicchio and taleggio soufflé", price: "" },
+            { name: "Grandmother's tiramisù", price: "" },
           ],
         },
       ] as Category[],
@@ -257,15 +262,14 @@ const content = {
     contatti: {
       label: "Contact",
       title: "Come visit us",
-      address: "Piazza Santa Maria Maggiore, 14\n31100 Treviso (TV), Italy",
-      phone: "+39 0422 123 456",
-      email: "info@anticoportico.it",
+      address: "Piazza Santa Maria Maggiore, 18\n31100 Treviso (TV), Italy",
+      phone: "+39 0422 545 259",
+      email: "anticoporticotreviso@gmail.com",
       orariTitle: "Opening hours",
       hours: [
-        { day: "Monday", time: "Closed" },
-        { day: "Tue – Fri", time: "12:00–14:30 · 19:00–22:30" },
-        { day: "Saturday", time: "12:00–14:30 · 19:00–23:00" },
-        { day: "Sunday", time: "12:00–15:00" },
+        { day: "Monday & Tuesday", time: "Closed" },
+        { day: "Wed – Sat", time: "10:30–15:00 · 18:30–23:00" },
+        { day: "Sunday", time: "10:30–15:00 · 18:30–22:00" },
       ],
       parking: "Parking at Piazza dei Signori (5 min walk). Historic center ZTL zone — check access times.",
       note: "Reservations by phone only",
@@ -275,7 +279,7 @@ const content = {
     footer: {
       tagline: "Authentic Treviso cuisine since 1962",
       links: "Quick links",
-      rights: "© 2025 Trattoria Antico Portico. All rights reserved.",
+      rights: "Trattoria Antico Portico. All rights reserved.",
     },
   },
 } as const;
@@ -298,6 +302,11 @@ export default function App() {
 
   const t = content[lang];
   const phone = t.contatti.phone;
+  const tel = `tel:${phone.replace(/\s/g, "")}`;
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const navLinks = [
     { href: "#storia", label: t.nav.storia },
@@ -338,7 +347,7 @@ export default function App() {
               {lang === "it" ? "EN" : "IT"}
             </button>
             <a
-              href={`tel:${phone}`}
+              href={tel}
               className="hidden lg:flex items-center gap-2 bg-primary text-primary-foreground text-[13px] px-4 py-2 rounded-sm hover:bg-primary/90 transition-colors"
             >
               <Phone size={13} />
@@ -361,7 +370,7 @@ export default function App() {
                 {l.label}
               </a>
             ))}
-            <a href={`tel:${phone}`} className="mt-2 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-sm text-sm">
+            <a href={tel} className="mt-2 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-sm text-sm">
               <Phone size={14} />
               {t.hero.cta1}
             </a>
@@ -396,7 +405,7 @@ export default function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href={`tel:${phone}`}
+                href={tel}
                 className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 text-[13px] font-bold tracking-wide rounded-sm hover:bg-primary/90 transition-colors uppercase"
               >
                 <Phone size={14} />
@@ -452,6 +461,7 @@ export default function App() {
               <div className="aspect-[4/5] rounded-sm overflow-hidden bg-muted">
                 <img
                   src={PHOTOS.storia}
+                  loading="lazy"
                   alt="Sala della trattoria con travi antiche e tavoli apparecchiati"
                   className="w-full h-full object-cover"
                 />
@@ -505,18 +515,6 @@ export default function App() {
               </ul>
             </div>
             <p className="text-[11px] text-muted-foreground text-center mt-5 italic">{t.menu.allergeni}</p>
-            {/* 
-<div className="text-center mt-7">
-  <a
-    href="/menu-antico-portico.pdf"
-    download="menu-antico-portico.pdf"
-    className="inline-flex items-center gap-2 border border-primary text-primary text-[13px] font-medium px-8 py-3 rounded-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wide"
-  >
-    <Download size={14} />
-    {t.menu.cta}
-  </a>
-</div>
-*/}
           </div>
         </div>
       </section>
@@ -535,6 +533,7 @@ export default function App() {
                 <div className="w-full flex justify-center">
                   <img
                     src={PHOTOS.vini}
+                    loading="lazy"
                     alt="Carta Vini"
                     className="w-full h-auto object-contain"
                   />
@@ -577,6 +576,7 @@ export default function App() {
               <div key={i} className={`overflow-hidden rounded-sm bg-muted ${i === 0 ? "lg:col-span-2" : ""}`}>
                 <img
                   src={photo.url}
+                  loading="lazy"
                   alt={photo.alt}
                   className="w-full h-full object-contain"
                 />
@@ -609,7 +609,7 @@ export default function App() {
                 <div className="flex gap-4 items-start">
                   <Phone className="shrink-0 mt-0.5 text-primary-foreground/50" size={17} />
                   <div>
-                    <a href={`tel:${phone}`} className="text-[14.5px] text-primary-foreground/85 hover:text-primary-foreground transition-colors">
+                    <a href={tel} className="text-[14.5px] text-primary-foreground/85 hover:text-primary-foreground transition-colors">
                       {phone}
                     </a>
                     <p className="text-[12px] text-primary-foreground/40 mt-0.5 italic">{t.contatti.note}</p>
@@ -619,14 +619,14 @@ export default function App() {
 
               <div className="flex flex-col sm:flex-row gap-3 mb-10">
                 <a
-                  href={`tel:${phone}`}
+                  href={tel}
                   className="flex items-center justify-center gap-2 bg-primary-foreground text-primary px-7 py-3.5 text-[13px] font-bold tracking-wide rounded-sm hover:bg-primary-foreground/90 transition-colors uppercase"
                 >
                   <Phone size={14} />
                   {t.contatti.ctaCall}
                 </a>
                 <a
-                  href="https://maps.app.goo.gl/5BtoaBxFksyg7LgP9"
+                  href={MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 border border-primary-foreground/30 text-primary-foreground px-7 py-3.5 text-[13px] font-medium rounded-sm hover:border-primary-foreground/60 transition-colors"
@@ -656,7 +656,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right: OpenStreetMap */}
+            {/* Right: Google Maps */}
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div
               style={{
@@ -675,32 +675,9 @@ export default function App() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
-                title="Mare Crudo Treviso"
+                title="Mappa: Trattoria Antico Portico, Treviso"
               />
             </div>
-            <a
-              href="https://maps.google.com/?q=Via+Terraglio+123+Treviso"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.8125rem',
-                fontWeight: 400,
-                color: 'var(--primary)',
-                textDecoration: 'none',
-                letterSpacing: '0.04em',
-                alignSelf: 'flex-start',
-                opacity: 0.8,
-                transition: 'opacity 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '0.8')}
-            >
-              <MapPin size={13} strokeWidth={1.5} />
-            </a>
           </div>
           </div>
         </div>
@@ -715,8 +692,12 @@ export default function App() {
               <h3 className="font-display text-[19px] text-background mb-1.5 font-semibold">Antico Portico</h3>
               <p className="text-[12px] text-background/45 leading-relaxed mb-5">{t.footer.tagline}</p>
               <div className="flex gap-4">
-                <a href="#" aria-label="Facebook" className="text-background/35 hover:text-background transition-colors"><Facebook size={17} /></a>
-                <a href="#" aria-label="Instagram" className="text-background/35 hover:text-background transition-colors"><Instagram size={17} /></a>
+                {SOCIAL.facebook && (
+                  <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-background/35 hover:text-background transition-colors"><Facebook size={17} /></a>
+                )}
+                {SOCIAL.instagram && (
+                  <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-background/35 hover:text-background transition-colors"><Instagram size={17} /></a>
+                )}
               </div>
             </div>
 
@@ -735,7 +716,7 @@ export default function App() {
               <h4 className="text-[10px] tracking-[0.2em] uppercase text-background/35 font-bold mb-4">{t.contatti.label}</h4>
               <div className="space-y-2 text-[13px] text-background/50">
                 <p className="whitespace-pre-line">{t.contatti.address}</p>
-                <a href={`tel:${phone}`} className="block hover:text-background transition-colors">{phone}</a>
+                <a href={tel} className="block hover:text-background transition-colors">{phone}</a>
                 <a href={`mailto:${t.contatti.email}`} className="block hover:text-background transition-colors">{t.contatti.email}</a>
               </div>
               <div className="flex gap-2 mt-5">
@@ -753,7 +734,7 @@ export default function App() {
           </div>
 
           <div className="border-t border-background/10 pt-6 text-center">
-            <p className="text-[11px] text-background/25">{t.footer.rights}</p>
+            <p className="text-[11px] text-background/25">© {new Date().getFullYear()} {t.footer.rights}</p>
           </div>
         </div>
       </footer>

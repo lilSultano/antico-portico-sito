@@ -79,8 +79,8 @@
 }
 
 @theme inline {
-  --font-family-display: 'Playfair Display', Georgia, serif;
-  --font-family-body: 'Lato', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

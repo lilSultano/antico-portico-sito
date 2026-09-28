@@ -1,15 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Antico Portico</title>
-    <link rel="icon" type="image/png" href="../Antico_Portico_Sito2/src/images/favicon.png" />
+    <title>Trattoria Antico Portico · Cucina trevigiana a Treviso dal 1962</title>
     <meta
       name="description"
-      content="Streamline your project management with an intuitive platform that enhances collaboration, task tracking, and productivity for teams of all sizes."
+      content="Trattoria storica in Piazza Santa Maria Maggiore a Treviso: cucina trevigiana, pasta fatta in casa, vini del territorio e terrazza estiva sotto il portico. Prenotazioni al 0422 545259."
     />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#7A1E2E" />
+
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <!-- TODO dominio: aggiungere quando il dominio è collegato (URL assoluti) -->
+    <!-- <link rel="canonical" href="https://DOMINIO/" /> -->
+    <!-- <meta property="og:url" content="https://DOMINIO/" /> -->
+    <!-- <meta property="og:image" content="https://DOMINIO/logo.jpg" /> -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:title" content="Trattoria Antico Portico · Treviso" />
+    <meta
+      property="og:description"
+      content="Cucina trevigiana autentica nel cuore di Treviso, dal 1962."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Trattoria Antico Portico",
+        "servesCuisine": ["Italiana", "Trevigiana", "Veneta"],
+        "telephone": "+39 0422 545259",
+        "email": "anticoporticotreviso@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Piazza Santa Maria Maggiore, 18",
+          "addressLocality": "Treviso",
+          "postalCode": "31100",
+          "addressRegion": "TV",
+          "addressCountry": "IT"
+        },
+        "hasMap": "https://maps.app.goo.gl/5BtoaBxFksyg7LgP9",
+        "acceptsReservations": "True",
+        "foundingDate": "1962",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "10:30",
+            "closes": "15:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "18:30",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "10:30",
+            "closes": "15:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "18:30",
+            "closes": "22:00"
+          }
+        ]
+      }
+    </script>
+
     <style>
       html,
       body {

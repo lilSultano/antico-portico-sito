@@ -1,11 +1,30 @@
+# Trattoria Antico Portico — sito web
 
-  # Proceed with next steps
+Sito vetrina della Trattoria Antico Portico (Treviso). React + Vite + Tailwind, pubblicato su GitHub Pages.
 
-  This is a code bundle for Proceed with next steps. The original project is available at https://www.figma.com/design/1WRxkkgOaJZUJBd3liuZzW/Proceed-with-next-steps.
+## Sviluppo
 
-  ## Running the code
+```bash
+npm install
+npm run dev      # server locale
+npm run build    # build di produzione in dist/
+npm run preview  # anteprima della build
+```
 
-  Run `npm i` to install the dependencies.
+Testi, orari, contatti e menù (IT/EN) sono in `src/app/App.tsx`, nell'oggetto `content`.
+Le foto sono in `src/images/`, favicon e logo in `public/`.
 
-  Run `npm run dev` to start the development server.
-  
+## Pubblicazione
+
+Ogni push su `main` pubblica il sito tramite GitHub Actions (`.github/workflows/deploy.yml`).
+
+Configurazione una tantum su GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+## Dominio personalizzato
+
+1. DNS dal registrar:
+   - dominio principale: 4 record `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `www`: record `CNAME` → `<utente-github>.github.io`
+2. GitHub: **Settings → Pages → Custom domain** → inserire il dominio, poi attivare **Enforce HTTPS**.
+3. Consigliato: verificare il dominio in **Settings (account) → Pages → Verified domains**.
+4. In `index.html` attivare `canonical`, `og:url` e `og:image` con il dominio definitivo.
