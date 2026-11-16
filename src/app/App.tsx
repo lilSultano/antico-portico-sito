@@ -139,7 +139,8 @@ const content = {
       hours: [
         { day: "Lunedì", time: "11:30–15:00" },
         { day: "Martedì", time: "Chiuso" },
-        { day: "Mer - Sab", time: "10:30–15:00 · 18:30–23:00" },
+        { day: "Mercoledì", time: "11:00–15:00 · 18:30–22:30" },
+        { day: "Gio - Sab", time: "10:30–15:00 · 18:30–23:00" },
         { day: "Domenica", time: "10:30–15:00 · 18:30–22:00" },
       ],
       parking: "A 5 min a piedi da Piazza dei Signori. Centro storico ZTL: verificare gli orari di accesso.",
@@ -256,7 +257,8 @@ const content = {
       hours: [
         { day: "Monday", time: "11:30–15:00" },
         { day: "Tuesday", time: "Closed" },
-        { day: "Wed – Sat", time: "10:30–15:00 · 18:30–23:00" },
+        { day: "Wednesday", time: "11:00–15:00 · 18:30–22:30" },
+        { day: "Thu – Sat", time: "10:30–15:00 · 18:30–23:00" },
         { day: "Sunday", time: "10:30–15:00 · 18:30–22:00" },
       ],
       parking: "Parking at Piazza dei Signori (5 min walk). Historic center ZTL zone — check access times.",
