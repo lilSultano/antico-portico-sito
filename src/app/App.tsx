@@ -3,20 +3,24 @@ import { Phone, MapPin, Clock, Menu, X, Facebook, Instagram, ExternalLink } from
 import heroImg from '../images/sala.jpg';
 import storiaImg from '../images/sala2.jpg';
 import viniImg from '../images/vino.jpg';
-import terrazza3Img from '../images/terrazza3.jpg';
-import piatto1Img from '../images/piatto1.jpg';
-import piatto4Img from '../images/piatto4.jpg';
-import sala3Img from '../images/sala3.jpg';
+import tortelloniImg from '../images/tortelloni.jpg';
+import pastaTartufoImg from '../images/pastatartufo.jpg';
+import piattoNeroImg from '../images/piattonero.jpg';
+import paneImg from '../images/pane.jpg';
+import risottoImg from '../images/risotto.jpg';
+import tartareImg from '../images/tartare.jpg';
 
 const PHOTOS = {
   hero: heroImg,
   storia: storiaImg,
   vini: viniImg,
   gallery: [
-    { url: terrazza3Img, alt: "La terrazza estiva sotto il portico" },
-    { url: piatto1Img, alt: "Secondo di carne con spinaci e patate" },
-    { url: piatto4Img, alt: "Risotto della casa" },
-    { url: sala3Img, alt: "La sala interna con i tavoli apparecchiati" },
+    { url: tortelloniImg, alt: "Pasta fresca fatta in casa" },
+    { url: pastaTartufoImg, alt: "Tagliatelle al tartufo nero" },
+    { url: piattoNeroImg, alt: "Specialità della casa" },
+    { url: paneImg, alt: "Pane fatto in casa" },
+    { url: risottoImg, alt: "Risotto della casa" },
+    { url: tartareImg, alt: "Tartare di manzo" },
   ],
 };
 
@@ -37,8 +41,8 @@ const content = {
     hero: {
       badge: "Dal 1962 · Treviso",
       title: "Antico Portico",
-      subtitle: "Cucina trevigiana autentica nel cuore della città",
-      subtitleSub: "Authentic Treviso cuisine in the heart of the city",
+      subtitle: "",
+      subtitleSub: "Cucina trevigiana autentica nel cuore della città",
       cta1: "Chiama per prenotare",
       cta2: "Scopri la nostra storia",
     },
@@ -87,17 +91,8 @@ const content = {
             { name: "Baccalà alla vicentina con polenta", price: "" },
           ],
         },
-        {
-          name: "Specialità",
-          items: [
-            { name: "Fiori di zucca ripieni in pastella", price: "" },
-            { name: "Seppie in umido con polenta bianca", price: "" },
-            { name: "Soufflé al radicchio e taleggio", price: "" },
-            { name: "Tiramisù della nonna", price: "" },
-          ],
-        },
       ] as Category[],
-      allergeni: "Per informazioni sugli allergeni, il nostro personale è a disposizione.",
+      allergeni: "Per il menù completo e informazioni sugli allergeni, il nostro personale è a disposizione.",
       cta: "Scarica il menù completo (PDF)",
     },
     vini: {
@@ -142,7 +137,8 @@ const content = {
       email: "anticoporticotreviso@gmail.com",
       orariTitle: "Orari di apertura",
       hours: [
-        { day: "Lunedì e Martedì", time: "Chiuso" },
+        { day: "Lunedì", time: "11:30–15:00" },
+        { day: "Martedì", time: "Chiuso" },
         { day: "Mer - Sab", time: "10:30–15:00 · 18:30–23:00" },
         { day: "Domenica", time: "10:30–15:00 · 18:30–22:00" },
       ],
@@ -162,7 +158,7 @@ const content = {
     hero: {
       badge: "Since 1962 · Treviso",
       title: "Antico Portico",
-      subtitle: "Authentic Treviso cuisine in the heart of the city",
+      subtitle: "",
       subtitleSub: "Cucina trevigiana autentica nel cuore della città",
       cta1: "Call to reserve",
       cta2: "Discover our story",
@@ -212,17 +208,8 @@ const content = {
             { name: "Baccalà alla vicentina with polenta", price: "" },
           ],
         },
-        {
-          name: "Specialties",
-          items: [
-            { name: "Stuffed zucchini blossoms in batter", price: "" },
-            { name: "Cuttlefish stew with white polenta", price: "" },
-            { name: "Radicchio and taleggio soufflé", price: "" },
-            { name: "Grandmother's tiramisù", price: "" },
-          ],
-        },
       ] as Category[],
-      allergeni: "For allergen information, our staff is always at your disposal.",
+      allergeni: "For the full menu and allergen information, our staff is always at your disposal.",
       cta: "Download full menu (PDF)",
     },
     vini: {
@@ -267,7 +254,8 @@ const content = {
       email: "anticoporticotreviso@gmail.com",
       orariTitle: "Opening hours",
       hours: [
-        { day: "Monday & Tuesday", time: "Closed" },
+        { day: "Monday", time: "11:30–15:00" },
+        { day: "Tuesday", time: "Closed" },
         { day: "Wed – Sat", time: "10:30–15:00 · 18:30–23:00" },
         { day: "Sunday", time: "10:30–15:00 · 18:30–22:00" },
       ],
@@ -397,9 +385,11 @@ export default function App() {
             <h1 className="font-display text-[clamp(3rem,8vw,6rem)] text-white leading-[1.02] mb-4 font-bold">
               {t.hero.title}
             </h1>
-            <p className="text-[1.1rem] md:text-[1.2rem] text-white/80 leading-snug mb-2 font-light">
-              {t.hero.subtitle}
-            </p>
+            {t.hero.subtitle && (
+              <p className="text-[1.1rem] md:text-[1.2rem] text-white/80 leading-snug mb-2 font-light">
+                {t.hero.subtitle}
+              </p>
+            )}
             <p className="text-sm text-white/40 italic mb-6 md:mb-10 font-body">
               {t.hero.subtitleSub}
             </p>
@@ -571,14 +561,14 @@ export default function App() {
             <p className="text-[15px] text-foreground/55 max-w-lg mx-auto leading-relaxed">{t.atmosfera.body}</p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
             {PHOTOS.gallery.map((photo, i) => (
-              <div key={i} className={`overflow-hidden rounded-sm bg-muted ${i === 0 ? "lg:col-span-2" : ""}`}>
+              <div key={i} className="aspect-square overflow-hidden rounded-sm bg-muted">
                 <img
                   src={photo.url}
                   loading="lazy"
                   alt={photo.alt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
